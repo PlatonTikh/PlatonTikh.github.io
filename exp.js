@@ -9,11 +9,11 @@ for (var row = 0; row < rows.length; row++) {
 allar.pop();
 
 // shuffle array
-for(var i = allar.length — 1; i > 0; i--){
-  var j = Math.floor(Math.random() * i)
-  var temp = allar[i]
-  allar[i] = allar[j]
-  allar[j] = temp
+for (var i = allar.length — 1; i > 0; i--) {
+  var j = Math.floor(Math.random() * i);
+  var temp = allar[i];
+  allar[i] = allar[j];
+  allar[j] = temp;
 };
 
 var saveFile = function (data) {
