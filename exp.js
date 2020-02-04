@@ -51,7 +51,7 @@ butt.addEventListener('click', function () {
   frstField.value = '';
   scndField.value = '';
   //
-  if (counter === allar.length) {
+  if (counter === allar.length - 1) {
     var finishButton = document.createElement("button" ); // создаем новый элемент <button>
 	  var text = document.createTextNode("Завершить" ); // создаем текстовое содержимое
 	  finishButton.appendChild(text); // добавляем текстовое содержимое элементу <button>
