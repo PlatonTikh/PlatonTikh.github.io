@@ -50,12 +50,14 @@ butt.addEventListener('click', function () {
   //alert(dataStr);
   frstField.value = '';
   scndField.value = '';
+  // allar.length
   if (counter === 10) {
-    var newElem = document.createElement("button" ); // создаем новый элемент <button>
+    var finishButton = document.createElement("button" ); // создаем новый элемент <button>
 	  var text = document.createTextNode("Завершить" ); // создаем текстовое содержимое
-	  newElem.appendChild(text); // добавляем текстовое содержимое элементу <button>
-	  document.body.appendChild(newElem);
-    newElem.addEventListener('click', function() {
+	  finishButton.appendChild(text); // добавляем текстовое содержимое элементу <button>
+	  document.body.appendChild(finishButton);
+    finishButton.classList.add('.finishing');
+    finishButton.addEventListener('click', function() {
       saveFile(dataStr);
     })
 
