@@ -20,7 +20,7 @@ function shuffle(array) {
         ctr--;
 // And swap the last element with it
         temp = arra1[ctr];
-        array[ctr] = arra1[index];
+        array[ctr] = array[index];
         array[index] = temp;
     }
     return array;
