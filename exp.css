@@ -20,18 +20,15 @@ img{
   width: 300px;
   height: 230px;
 }
-
 .firField{
   position: absolute;
   top: 60%;
   left: 26%;
-
 }
 .secField{
   position: absolute;
   top: 60%;
   left: 52%;
-
 }
 
 label{
