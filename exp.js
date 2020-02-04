@@ -48,9 +48,6 @@ var saveFile = function (data) {
 
 
 
-
-
-
 var counter=0;
 var frstField = document.querySelector('.firField');
 var scndField = document.querySelector('.secField');

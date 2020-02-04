@@ -44,3 +44,6 @@ button{
   top: 80%;
   left: 44.7%;
 }
+.hidden {
+  visibility: hidden;
+}
