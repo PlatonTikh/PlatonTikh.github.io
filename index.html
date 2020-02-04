@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<TITLE>Words-objects research</TITLE>
+<META charset="utf-8">
+<link href="exp.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</HEAD>
+
+<BODY bgcolor=F7FBE5>
+<p class='instr'>Ваша задача - вписывать в поля формы описания состояний показанных в паре объектов</p>
+<p class='instr'>Старайтесь давать короткие описания</p>
+<br>
+<form id='forma'>
+   <div class='img_block'><img class="first" id='frst' src='Images/aabacus/e1_s1.jpg'>
+     <img class="second" id='scnd' src='Images/aabacus/e1_s2.jpg'>
+   </div>
+   <div class="inp">
+   <p  name='state1'><input id='state1' autocomplete = 'off' class="firField" maxlength="25" size="40" placeholder="Введите название состояния" value=''></p>
+   <p  name='state2'><input id='state2' autocomplete = 'off' class="secField" maxlength="25" size="40" placeholder="Введите название состояния" value=''></p>
+ </div>
+   <label>
+   <input class="butt" type="submit" for='state' name="submit" id="submit" value="Отправить">
+  </label>
+</form>
+<script src='exp.js'></script>
+</BODY>
+</HTML>
