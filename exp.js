@@ -19,7 +19,7 @@ function shuffle(array) {
 // Decrease ctr by 1
         ctr--;
 // And swap the last element with it
-        temp = arra1[ctr];
+        temp = array[ctr];
         array[ctr] = array[index];
         array[index] = temp;
     }
