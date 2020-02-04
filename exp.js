@@ -9,12 +9,23 @@ for (var row = 0; row < rows.length; row++) {
 allar.pop();
 
 // shuffle array
-for (var i = allar.length — 1; i > 0; i--) {
-  var j = Math.floor(Math.random() * i);
-  var temp = allar[i];
-  allar[i] = allar[j];
-  allar[j] = temp;
-};
+function shuffle(array) {
+    var ctr = array.length, temp, index;
+
+// While there are elements in the array
+    while (ctr > 0) {
+// Pick a random index
+        index = Math.floor(Math.random() * ctr);
+// Decrease ctr by 1
+        ctr--;
+// And swap the last element with it
+        temp = arra1[ctr];
+        array[ctr] = arra1[index];
+        array[index] = temp;
+    }
+    return array;
+}
+shuffle(allar);
 
 var saveFile = function (data) {
   var textToBLOB = new Blob([data], { type: 'text/plain' });
