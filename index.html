@@ -398,21 +398,24 @@ head(data, 8)</code></pre>
 <pre class="r"><code># число наблюдений
 N=nrow(data)
 # средние и sd независимой и зависимой переменной
-X_mean=mean(data$depth)
-X_sd=sd(data$depth)
+X=data$depth
+Y=data$price
+X_mean=mean(X)
+X_sd=sd(X)
 
-Y_mean=mean(data$price)
-Y_sd=sd(data$price)
+Y_mean=mean(Y)
+Y_sd=sd(Y)
 
-XY_mean=mean(data$depth*data$price)
+XY_mean=mean(X*Y)
 
-r_coef=(XY_mean-X_mean*Y_mean)/(X_sd*Y_sd)</code></pre>
+XY_cov=sum((X-X_mean)*(Y-Y_mean))/(N-1)
+r_coef=XY_cov/(X_sd*Y_sd)</code></pre>
 <p>Теперь мы можем найти коэффициенты нашей модели</p>
 <p><strong>intercept</strong> отвечает за расстояние нашей прямой от оси Х, а <strong>slope</strong> определяет наклон прямой</p>
 <pre class="r"><code>Slope=r_coef*(Y_sd/X_sd)
 Intercept=Y_mean - Slope*X_mean
 result=paste0(&#39;Regression formula: &#39;, round(Slope,2), &#39;x&#39;, &#39;+&#39;, round(Intercept,2)); result</code></pre>
-<pre><code>## [1] &quot;Regression formula: -29.65x+5763.63&quot;</code></pre>
+<pre><code>## [1] &quot;Regression formula: -29.65x+5763.67&quot;</code></pre>
 <p>Ну не писать же нам это все каждый раз! Сделаем простую функцию для регрессии:</p>
 <pre class="r"><code>reg_function=function(x, y){
   N=length(x)
@@ -425,7 +428,8 @@ result=paste0(&#39;Regression formula: &#39;, round(Slope,2), &#39;x&#39;, &#39;
   
   XY_mean=mean(x*y)
 
-  r_coef=(XY_mean-X_mean*Y_mean)/(X_sd*Y_sd)
+  XY_cov=sum((x-X_mean)*(y-Y_mean))/(N-1)
+  r_coef=XY_cov/(X_sd*Y_sd)
   
   b=r_coef*(Y_sd/X_sd)
   a=Y_mean - b*X_mean
@@ -450,7 +454,7 @@ result=paste0(&#39;Regression formula: &#39;, round(Slope,2), &#39;x&#39;, &#39;
 ## (Intercept)        depth  
 ##     5763.67       -29.65</code></pre>
 <pre class="r"><code>res=reg_function(data$depth, data$price)</code></pre>
-<pre><code>## [1] &quot;Regression formula: -29.6494201979771x + 5763.63377460016&quot;</code></pre>
+<pre><code>## [1] &quot;Regression formula: -29.6499698822602x + 5763.66771727752&quot;</code></pre>
 <p>Неплохо! Но как понять, насколько хорошо она описывает данные? Используем показатель <strong>R-squared</strong>, который сами же и посчитаем</p>
 <pre class="r"><code>R_sq=function(x, y, y_calc){
   SS_tot=sum((y-mean(y))**2)
@@ -461,7 +465,7 @@ result=paste0(&#39;Regression formula: &#39;, round(Slope,2), &#39;x&#39;, &#39;
   return(R2)
 }
 our_R=R_sq(res$x, res$y, res$y_calc)</code></pre>
-<pre><code>## [1] &quot;R-squared is 0.000113367224339411&quot;</code></pre>
+<pre><code>## [1] &quot;R-squared is 0.00011336722437838&quot;</code></pre>
 <pre class="r"><code>round(summary(lm(price~depth, data))$r.squared,2)</code></pre>
 <pre><code>## [1] 0</code></pre>
 <p>В случае хороших моделей <em>R-squared</em> должен приближаться к 1. У нас … не очень хорошая модель Что же мы сделали не так?</p>
